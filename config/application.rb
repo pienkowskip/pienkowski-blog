@@ -25,5 +25,14 @@ module Pienkowski
     config.i18n.default_locale = :pl
 
     config.action_controller.include_all_helpers = false
+
+    config.assets.precompile += %w( layouts/guest.css layouts/guest.js )
+    config.assets.precompile << ->(path) do
+      if path =~ /^\w+(\/\w+)*\.(css|js)$/
+        path.sub(/\.(css|js)$/, '_controller').camelize.constantize <= ApplicationController rescue false
+      else
+        false
+      end
+    end
   end
 end
