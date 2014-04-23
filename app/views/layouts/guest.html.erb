@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paweł Pieńkowski</title>
+  <%= render partial: 'layouts/head', locals: {layout: 'guest'} %>
+</head>
+<body id="column-layout">
+<div id="left-spacer" class="layout-column"></div>
+<div id="sidebar-wr" class="layout-column">
+  <div id="sidebar">
+    <%= link_to (image_tag 'sign.png', id: 'sign', alt: 'Paweł Pieńkowski (podpis)'), root_path %>
+  </div>
+</div>
+<div id="main-wr" class="layout-column">
+  <div id="main">
+    <div id="menu">
+      <ul>
+        <li><%= link_to 'blog', '#' %></li>
+        <li class="hover"><%= link_to 'o mnie', '#'%></li>
+        <li><%= link_to 'artykuły', '#' %></li>
+        <li><%= link_to 'projekty', '#' %></li>
+        <li><%= link_to 'galerie', '#' %></li>
+      </ul>
+      <hr />
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+<div id="right-spacer" class="layout-column"></div>
+</body>
+</html>

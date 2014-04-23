@@ -1,0 +1,14 @@
+<%= favicon_link_tag '/images/icons/site.png', type: 'image/png' %>
+
+<%
+   dependencies = [
+           'application',
+           'layouts/' + layout,
+           params[:controller]]
+%>
+<%= stylesheet_link_tag *dependencies, media: 'all' %>
+
+<% dependencies.pop() %>
+<%= javascript_include_tag *dependencies %>
+
+<%= csrf_meta_tags %>

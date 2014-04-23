@@ -1,0 +1,196 @@
+html{
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  height: 100%; /* because of firefox bug */
+}
+
+$sidebar-width: 244px;
+
+#column-layout {
+  display: table;
+  width: 100%;
+  > .layout-column {
+    display: table-cell;
+    vertical-align: top;
+    padding-top: 16px;
+  }
+  > #left-spacer {
+    width: 50%;
+    background: #444 url('/images/layout/bg/gray.jpg') repeat right top;
+  }
+  > #sidebar-wr {
+    width: 0%;
+    background: #444 url('/images/layout/bg/sidebar.jpg') repeat-y right top;
+    min-width: $sidebar-width;
+    padding-right: 1px;
+    > #sidebar {
+      width: $sidebar-width;
+      float: right;
+    }
+  }
+  > #main-wr {
+    width: 0%;
+    background: #3b2 url('/images/layout/bg/content.jpg') repeat-y left top;
+    padding-left: 1px;
+    > #main {
+      float: left;
+    }
+  }
+  > #right-spacer {
+    width: 50%;
+    background: #3b2 url('/images/layout/bg/green.jpg') repeat-y left top;
+  }
+}
+
+@mixin flex-column-layout-widths($layout, $sidebar) {
+  #column-layout {
+    > #sidebar-wr {
+      min-width: $sidebar;
+      > #sidebar {
+        width: $sidebar;
+      }
+    }
+    > #main-wr {
+      min-width: $layout - $sidebar - 2px;
+      > #main {
+        width: $layout - $sidebar - 2px;
+      }
+    }
+    > #right-spacer {
+      background-position: (-($layout - $sidebar - 1px)) top;
+    }
+  }
+}
+
+@include flex-column-layout-widths(990px, $sidebar-width);
+
+@media (max-width: 1023px) {
+  @include flex-column-layout-widths(770px, $sidebar-width);
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  @include flex-column-layout-widths(990px, $sidebar-width);
+}
+@media (min-width: 1280px) {
+  @include flex-column-layout-widths(1240px, $sidebar-width);
+}
+
+#sign {
+  width: 230px;
+  display: block;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+a {
+  color: #fe5;
+}
+a:hover {
+  color: #cf6;
+}
+
+#main {
+  text-shadow: 2px 2px 4px #333;
+  color: #ffd;
+}
+
+#menu {
+  margin-top: 92px;
+  margin-right: 46px;
+  background: transparent url('/images/layout/shades/main.png') repeat-y 0px top;
+  > ul {
+    display: block;
+    white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: transparent url('/images/layout/menu/nib.png') no-repeat left center;
+    margin-left: -2px;
+    padding-bottom: 0px;
+    overflow: auto;
+    > li {
+      background: transparent none no-repeat center;
+      border: 1px solid transparent;
+      display: block;
+      height: 44px;
+      text-align: center;
+      margin-left: -1px;
+      float: left;
+      overflow: hidden;
+      > a {
+        letter-spacing: 1px;
+        color: white;
+        text-transform: uppercase;
+        text-decoration: none;
+        text-shadow: 2px 2px 3px #222;
+        font-size: 19px;
+        padding-top: 12px;
+        display: block;
+        height: 32px;
+      }
+    }
+    > li:hover,
+    > li.hover {
+      border-color: #271;
+    }
+  }
+
+  > hr {
+    margin: 0;
+    margin-left: 4px;
+    margin-top: 5px;
+    height: 6px;
+    border: none;
+    background: transparent none no-repeat center;
+  }
+
+  @mixin flex-column-layout-menu($dirname, $buttons, $layout-width, $sidebar-width) {
+    $space: $layout-width - $sidebar-width - 26px - 46px;
+    $width: floor($space / $buttons);
+    $rem: $space - $width * $buttons;
+
+    > ul {
+      padding-left: 26px + $rem;
+      > li {
+        width: $width - 1px;
+        background-image: url('/images/layout/menu/#{$dirname}/unselected.png');
+      }
+      > li:hover,
+      > li.hover {
+        background-image: url('/images/layout/menu/#{$dirname}/selected.png');
+      }
+    }
+    > hr {
+      background-image: url('/images/layout/menu/#{$dirname}/separator.png');
+    }
+  }
+
+  @include flex-column-layout-menu('1024', 5, 990px, $sidebar-width);
+
+  @media (max-width: 1023px) {
+    @include flex-column-layout-menu('800', 3, 770px, $sidebar-width);
+    > ul {
+      padding-bottom: 1px;
+      > li {
+        margin-bottom: -1px;
+      }
+    }
+  }
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    @include flex-column-layout-menu('1024', 5, 990px, $sidebar-width);
+  }
+  @media (min-width: 1280px) {
+    @include flex-column-layout-menu('1280', 5, 1240px, $sidebar-width);
+    > ul > li > a {
+      letter-spacing: 2px;
+    }
+  }
+}
+
+#content {
+  padding: 8px 16px 8px 24px;
+  margin-right: 46px;
+  background: transparent url('/images/layout/shades/main.png') repeat-y 0px top;
+}
