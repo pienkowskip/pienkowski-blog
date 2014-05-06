@@ -1,1 +1,38 @@
 pl:
+
+  date:
+    formats:
+      default: '%Y-%m-%d'
+      short: '%d.%m'
+      long: '%e %B %Y'
+    day_names: [niedziela, poniedziałek, wtorek, środa, czwartek, piątek, sobota]
+    abbr_day_names: [nd., pn., wt., śr., czw., pt., sob.]
+    month_names: [~, stycznia, lutego, marca, kwietnia, maja, czerwca, lipca, sierpnia, września, październia, listopada, grudnia]
+    abbr_month_names: [~, sty, lut, mar, kwi, maj, cze, lip, sie, wrz, paź, lis, gru]
+    order:
+      - year
+      - month
+      - day
+  time:
+    formats:
+      default: '%H:%M:%S'
+      short: '%H:%M'
+      long: '%H:%M, %d %b %Y'
+    am: am
+    pm: pm
+
+  dialogs:
+    titles:
+      info: Informacja
+      notice: Powiadomienie
+      alert: Ostrzeżenie
+      confirm: Potwierdzenie
+
+  user:
+    sessions:
+      create:
+        success: Zostałeś zalogowany poprawnie.
+        failure: Podane hasło lub login jest niepoprawne. Spróbuj zalogować się ponownie.
+      destroy:
+        success: Zostałeś wylogowany poprawnie.
+        failure: Nie byłeś zalogowany, więc nie zostałeś wylogowany.

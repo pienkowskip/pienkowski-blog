@@ -26,7 +26,7 @@ module Pienkowski
 
     config.action_controller.include_all_helpers = false
 
-    config.assets.precompile += %w( layouts/guest.css layouts/guest.js )
+    config.assets.precompile += %w( layouts/guest.css layouts/guest.js layouts/user.css layouts/user.js )
     config.assets.precompile << ->(path) do
       if path =~ /^\w+(\/\w+)*\.(css|js)$/
         path.sub(/\.(css|js)$/, '_controller').camelize.constantize <= ApplicationController rescue false

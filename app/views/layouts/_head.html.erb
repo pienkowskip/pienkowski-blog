@@ -11,4 +11,9 @@
 <% dependencies.pop() %>
 <%= javascript_include_tag *dependencies %>
 
+<script type="text/javascript">
+    I18n.defaultLocale = '<%= I18n.default_locale %>';
+    I18n.locale = '<%= I18n.locale %>';
+</script>
+
 <%= csrf_meta_tags %>

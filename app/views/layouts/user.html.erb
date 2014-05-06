@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logowanie &ndash; Paweł Pieńkowski</title>
+  <%= render partial: 'layouts/head', locals: {layout: 'user'} %>
+</head>
+<body>
+<div class="panel" id="login-panel">
+  <div class="panel-heading">
+    <h1>Logowanie</h1>
+  </div>
+  <div class="panel-body" id="content">
+    <%= yield %>
+  </div>
+</div>
+<% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "dialog-content #{name}-dialog" %>
+<% end %>
+</body>
+</html>

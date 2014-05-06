@@ -1,0 +1,19 @@
+#content > form {
+  margin: -1em 0;
+  > input {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    margin: 1em 0;
+    box-sizing: border-box;
+  }
+  > input[type='text'],
+  > input[type='password'] {
+    border: 1px solid #ccc;
+  }
+  input[type='checkbox'] {
+    vertical-align: middle;
+    margin: 0;
+    margin-right: 0.5em;
+  }
+}

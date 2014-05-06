@@ -45,3 +45,9 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'quiet_assets', group: :development
+
+gem 'sorcery', '~> 0.8.5'
+
+gem 'strip_attributes', '~> 1.2'
+
+gem 'i18n-js'
