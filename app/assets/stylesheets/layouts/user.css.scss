@@ -1,14 +1,10 @@
 /*
  *= require abstract/dialogs
+ *= require ./admin
  */
 
-body {
-  font-size: 14px;
-  color: #333;
-}
-
-input {
-  color: #555;
+#content {
+  padding-top: 1em;
 }
 
 .panel {

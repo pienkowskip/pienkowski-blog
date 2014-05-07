@@ -6,4 +6,9 @@ Pienkowski::Application.routes.draw do
     post 'login', to: 'sessions#create'
     get 'logout', to: 'sessions#destroy'
   end
+
+  namespace :admin do
+    root 'dashboard#show'
+    resource :dashboard, controller: :dashboard, only: :show
+  end
 end

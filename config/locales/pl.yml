@@ -36,3 +36,6 @@ pl:
       destroy:
         success: Zostałeś wylogowany poprawnie.
         failure: Nie byłeś zalogowany, więc nie zostałeś wylogowany.
+
+  admin:
+    not_logged_in: Musisz być zalogowany, aby używać tej sekcji.

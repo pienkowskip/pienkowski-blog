@@ -25,7 +25,7 @@ function ModalDialog(cls, title, content) {
     this.show = function(onCloseListener, onShowListener) {
         var self = this;
         var dimmer = $('<div id="dialog-dimmer" class="dimmer" />');
-        var dialog = $('<div class="modal-dialog"><div class="dialog-title-bar"><span>' + title + '</span><a class="dialog-close-button glyphicon glyphicon-remove" /></div></div>');
+        var dialog = $('<div class="modal-dialog"><div class="dialog-title-bar"><span>' + title + '</span><span class="dialog-close-button glyphicon glyphicon-remove"></span></div></div>');
         if (cls !== null)
             dialog.addClass(cls);
         dialog.append(body);

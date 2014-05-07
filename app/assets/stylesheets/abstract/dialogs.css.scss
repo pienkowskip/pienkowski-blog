@@ -28,22 +28,22 @@
   box-shadow: 1px 1px 6px 3px #666;
   color: #333;
   > .dialog-title-bar {
-    padding: 2px 2px 2px 4px;
+    padding: 4px 4px 4px 8px;
     overflow: hidden;
     height: 20px;
     background-color: #f5f5f5;
     font-weight: bold;
     font-size: 16px;
-    > a {
-      float: right;
-    }
     > span {
       display: inline-block;
       float: left;
     }
+    > span.dialog-close-button {
+      float: right;
+    }
   }
   > .dialog-content {
-    padding: 5px 10px;
+    padding: 1em 1.5em;
     text-align: center;
     display: block !important;
   }
