@@ -1,10 +1,12 @@
 /*
  *= require abstract/dialogs
+ *= require glyphicons
  */
 
 body {
   font-size: 14px;
   color: #333;
+  line-height: 1.3;
 }
 
 a {
@@ -17,6 +19,42 @@ a:focus {
   text-decoration: underline;
 }
 
+h1 {
+  font-size: 30px;
+}
+h2 {
+  font-size: 24px;
+}
+h3 {
+  font-size: 18px;
+}
+h4 {
+  font-size: 14px;
+}
+h5 {
+  font-size: 12px;
+}
+h6 {
+  font-size: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  > .glyphicon {
+    cursor: auto;
+  }
+}
+
+h1, h2, h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+h4, h5, h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
 input {
   color: #555;
 }
@@ -27,7 +65,8 @@ input {
 
 #navbar {
   list-style-type: none;
-  padding: 0 14px;
+  padding: 0;
+  padding-right: 15px;
   margin: 0;
   border-bottom: 1px solid #e7e7e7;
   background-color: #f8f8f8;
@@ -117,5 +156,18 @@ input {
 }
 
 #content {
+  padding: 15px;
   padding-top: 50px;
+}
+
+.glyphicon-large {
+  font-size: 24px;
+  margin: 4px;
+}
+
+h1.page-title {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }

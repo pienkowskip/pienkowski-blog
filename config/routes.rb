@@ -1,4 +1,6 @@
 Pienkowski::Application.routes.draw do
+  get "posts/index"
+  get "posts/new"
   root 'guest/test#index'
 
   namespace :user do
@@ -9,6 +11,9 @@ Pienkowski::Application.routes.draw do
 
   namespace :admin do
     root 'dashboard#show'
+
     resource :dashboard, controller: :dashboard, only: :show
+
+    resources :posts
   end
 end

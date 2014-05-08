@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140505205128) do
+ActiveRecord::Schema.define(version: 20140507141112) do
+
+  create_table "categories", force: true do |t|
+    t.string "text_id"
+    t.string "name"
+  end
+
+  create_table "posts", force: true do |t|
+    t.integer  "category_id",    null: false
+    t.integer  "author_id",      null: false
+    t.string   "title",          null: false
+    t.text     "content",        null: false
+    t.text     "parsed_content", null: false
+    t.datetime "created_at",     null: false
+  end
+
+  add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
+  add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",                     null: false
