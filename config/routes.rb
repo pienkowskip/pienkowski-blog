@@ -1,7 +1,11 @@
 Pienkowski::Application.routes.draw do
-  get "posts/index"
-  get "posts/new"
-  root 'guest/test#index'
+  get 'test', to: 'guest/test#index'
+
+  root 'guest/posts#index'
+
+  namespace :guest, path: '' do
+    resources :posts, only: [:index, :show]
+  end
 
   namespace :user do
     get 'login', to: 'sessions#new'
@@ -14,6 +18,6 @@ Pienkowski::Application.routes.draw do
 
     resource :dashboard, controller: :dashboard, only: :show
 
-    resources :posts
+    resources :posts, except: :show
   end
 end

@@ -15,8 +15,8 @@
   <div id="main">
     <div id="menu">
       <ul>
-        <li><%= link_to 'blog', '#' %></li>
-        <li class="hover"><%= link_to 'o mnie', '#'%></li>
+        <li<%= raw(' class="active"') if params[:controller] == 'guest/posts' %>><%= link_to 'blog', guest_posts_path %></li>
+        <li><%= link_to 'o mnie', '#'%></li>
         <li><%= link_to 'artykuły', '#' %></li>
         <li><%= link_to 'projekty', '#' %></li>
         <li><%= link_to 'galerie', '#' %></li>

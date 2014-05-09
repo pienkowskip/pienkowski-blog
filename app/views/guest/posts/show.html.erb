@@ -1,0 +1,8 @@
+<div class="post">
+  <h1 class="post-title"><%= @post.title %></h1>
+  <div class="post-attrs">przez <em><%= @post.author.username %></em> &bull; <%= l @post.created_at.to_date, format: :long%></div>
+  <div class="post-content formatted">
+    <%= simple_format(@post.content) %>
+  </div>
+  <div class="post-tags"></div>
+</div>

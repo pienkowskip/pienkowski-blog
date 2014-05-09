@@ -1,0 +1,57 @@
+.post {
+  margin: 0.5pc 0;
+  clear: both;
+  position: relative;
+  > h1.post-title {
+    font-size: 1.56em;
+    > a {
+      text-decoration: none;
+      color: #ffd;
+    }
+    > a:hover,
+    > a:focus {
+      text-decoration: underline;
+    }
+  }
+  > .post-attrs {
+    color: #cca;
+    font-size: small;
+  }
+  > .post-content {
+    margin: 1pc 0;
+  }
+}
+
+.post-excerpt {
+  padding: 1pc 0;
+  //TODO: Use responsive separator.
+  background: transparent url('/images/layout/posts/separator.png') no-repeat center top;
+  > .post-datebox {
+    line-height: 0.9pc;
+    background: transparent url('/images/layout/posts/datebox.png') no-repeat left center;
+    text-align: center;
+    margin: 0;
+    padding: 0.64pc 0;
+    width: 46px;
+    position: absolute;
+    right: -62px;
+    top: -4px;
+    font-weight: bold;
+    color: white;
+    > .month {
+      font-size: small;
+    }
+    > .year {
+      font-size: x-small;
+    }
+  }
+  > .post-more {
+    text-align: right;
+    padding-right: 2pc;
+    font-weight: bold;
+  }
+}
+.post-excerpt#first-post {
+  padding-top: 0;
+  background: none;
+}

@@ -87,7 +87,8 @@ $sidebar-width: 244px;
 a {
   color: #fe5;
 }
-a:hover {
+a:hover,
+a:focus {
   color: #cf6;
 }
 
@@ -131,8 +132,9 @@ a:hover {
         height: 32px;
       }
     }
+    > li:focus,
     > li:hover,
-    > li.hover {
+    > li.active {
       border-color: #271;
     }
   }
@@ -158,7 +160,8 @@ a:hover {
         background-image: url('/images/layout/menu/#{$dirname}/unselected.png');
       }
       > li:hover,
-      > li.hover {
+      > li:focus,
+      > li.active {
         background-image: url('/images/layout/menu/#{$dirname}/selected.png');
       }
     }
