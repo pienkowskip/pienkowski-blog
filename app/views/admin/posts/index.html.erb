@@ -1,1 +1,25 @@
 <h1 class="page-title"><i class="glyphicon glyphicon-large glyphicon-th-list"></i> Lista wpisów</h1>
+<table>
+  <% if @posts.empty? %>
+      <tbody>
+      <tr><td>Nie ma żadnych wpisów.</td></tr>
+      </tbody>
+  <% else %>
+      <colgroup>
+        <col class="large"/>
+        <col class="medium" span="2" />
+      </colgroup>
+
+      <thead>
+      <tr>
+        <th>Tytuł</th>
+        <th>Autor</th>
+        <th>Kategoria</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <%= render partial: 'post', collection: @posts, as: :post %>
+      </tbody>
+  <% end %>
+</table>

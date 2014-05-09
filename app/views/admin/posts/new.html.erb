@@ -1,4 +1,9 @@
 <h1 class="page-title"><i class="glyphicon glyphicon-large glyphicon-pencil"></i> Nowy wpis</h1>
+<%= validation_errors @post %>
 <%= form_for :post, url: admin_posts_path, html: {class: 'row-form'} do |fb| %>
-
+    <%= render partial: 'form_body', locals: {fb: fb} %>
+    <div class="submits">
+      <%= fb.submit 'Publikuj', class: 'btn btn-success' %>
+      <%= link_to 'Odrzuć', admin_posts_path, class: 'btn btn-danger' %>
+    </div>
 <% end %>

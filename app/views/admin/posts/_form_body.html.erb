@@ -1,0 +1,9 @@
+<%= fb.labeled_text_field :title, 'Tytuł', placeholder: 'Tytuł' %>
+<%= fb.labeled_text_area :content, 'Treść', placeholder: 'Napis swój wpis...' %>
+<h2 class="section-title">Właściwości</h2>
+<label>Kategoria</label>
+<%= fb.select :category_id, [], {}, {class: 'small'} %>
+<%= fb.labeled_text_field :created_at, 'Data', placeholder: 'Teraz', class: 'datetimepicker small' %>
+<label>Folder mediów</label>
+<label>Galeria zdjęc</label>
+<hr />

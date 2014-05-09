@@ -18,8 +18,33 @@ pl:
       default: '%H:%M:%S'
       short: '%H:%M'
       long: '%H:%M, %d %b %Y'
+      datetimepicker: '%Y-%m-%d %H:%M'
     am: am
     pm: pm
+
+  errors:
+    format: '<em>%{attribute}</em>: %{message}'
+    title_message: Wystąpiły następujące błędy
+    messages:
+      blank: Pole nie może zostać puste.
+      too_short: Pole musi być dłuższe niż %{count} znaki/ów.
+      invalid: Pole wypełnione niepoprawnie.
+      invalid_class: Pole wypełnione niepoprawnie.
+      inclusion: Pole może przyjmować tylko wybrane wartości.
+      not_a_number: Pole musi zawierać liczbę.
+      greater_than: Pole musi zawierać liczbę większą niż %{count}.
+      greater_than_or_equal_to: Pole musi zawierać liczbę wynoszącą co najmniej %{count}.
+
+  activerecord:
+      models:
+      attributes:
+        post:
+          category_id: kategoria
+          author_id: autor
+          title: tytuł
+          content: treść
+          parsed_content: przetworzona treść
+          created_at: data
 
   dialogs:
     titles:
@@ -39,3 +64,7 @@ pl:
 
   admin:
     not_logged_in: Musisz być zalogowany, aby używać tej sekcji.
+    posts:
+      destroy:
+        success: Wpis został usunięty.
+        failure: Wystąpił błąd. Wpis nie został usunięty.

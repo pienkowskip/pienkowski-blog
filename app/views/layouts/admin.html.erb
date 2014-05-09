@@ -30,6 +30,9 @@
   <li class="pull-right"><%= link_to 'Wyloguj', user_logout_path %></li>
 </ul>
 <div id="content">
+  <% if content_for? :validation_errors %>
+      <%= yield :validation_errors %>
+  <% end %>
   <%= yield %>
 </div>
 <% flash.each do |name, msg| %>

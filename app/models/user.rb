@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
+  has_many :posts, foreign_key: :author_id, inverse_of: :author
+
   strip_attributes except: [:password, :password_confirmation]
 
   validates :username, :email, presence: true

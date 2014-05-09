@@ -1,3 +1,5 @@
+//=require jquery
+
 function ModalDialog(cls, title, content) {
     var calcFixPoint = function(factor, objectSz, spaceSz) {
         var fp = (factor * spaceSz) - (objectSz / 2);

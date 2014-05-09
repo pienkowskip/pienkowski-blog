@@ -26,22 +26,6 @@
   }
   > .panel-body {
     padding: 1em;
-    .button {
-      cursor: pointer;
-      border: 1px solid;
-    }
-    .button-success {
-      color: #ffffff;
-      background-color: #5cb85c;
-      border-color: #4cae4c;
-      font-weight: bold;
-    }
-    .button-success:hover,
-    .button-success:focus,
-    .button-success:active {
-      background-color: #47a447;
-      border-color: #398439;
-    }
   }
 }
 

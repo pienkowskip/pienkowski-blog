@@ -1,6 +1,7 @@
 /*
  *= require abstract/dialogs
  *= require glyphicons
+ *= require jquery.datetimepicker
  */
 
 body {
@@ -54,13 +55,215 @@ h4, h5, h6 {
   margin-bottom: 10px;
 }
 
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
 
-input {
-  color: #555;
+.page-title,
+.section-title {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.section-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .pull-right {
   float: right !important;
+}
+
+.glyphicon-large {
+  font-size: 24px;
+  margin: 4px;
+}
+
+$form-regular-inputs: "
+input[type='text'],
+input[type='password'],
+input[type='email'],
+textarea,
+select
+";
+
+#{$form-regular-inputs} {
+  color: #555;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  margin: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  cursor: pointer;
+  border: 1px solid;
+  width: auto;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: normal;
+  display: inline-block;
+  padding: 6px 12px;
+}
+.btn:hover,
+.btn:focus,
+.btn:active {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-action {
+  padding: 4px !important;
+  line-height: 1em;
+  border-radius: 2px;
+}
+
+.btn.glyphicon {
+  top: auto;
+  position: static;
+  font-weight: normal;
+}
+
+.btn.x-small {
+  font-size: 12px;
+  padding: 2px 6px;
+}
+.btn.small {
+  font-size: 14px;
+  padding: 4px 8px;
+}
+.btn.medium {
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+
+@mixin btn-type($name, $bg, $border, $bg-active, $border-active) {
+  .btn-#{$name} {
+    background-color: $bg;
+    border-color: $border;
+  }
+  .btn-#{$name}:hover,
+  .btn-#{$name}:focus,
+  .btn-#{$name}:active {
+    background-color: $bg-active;
+    border-color: $border-active;
+  }
+}
+
+@include btn-type('primary', #428bca, #357ebd, #3276b1, #285e8e);
+@include btn-type('success', #5cb85c, #4cae4c, #47a447, #398439);
+@include btn-type('danger', #d9534f, #d43f3a, #d2322d, #ac2925);
+
+form.row-form {
+  @mixin inputs() {
+    > label {
+      display: block;
+      margin-top: 1em;
+      margin-bottom: 0.4em;
+      font-weight: bold;
+    }
+    > input,
+    > textarea,
+    > select {
+      display: block;
+      width: 100%;
+      margin-bottom: 1em;
+      height: 30px;
+    }
+    > .small {
+      width: 33%;
+    }
+  }
+  @include inputs();
+  > .field_with_errors {
+    @include inputs();
+    > label {
+      color: #a14848;
+    }
+    #{$form-regular-inputs} {
+      border-color: #e6b8b8;
+    }
+  }
+  > .submits {
+    > .btn {
+      margin-left: 1em;
+    }
+    > .btn:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.validation-errors {
+  border: 1px solid #e6b8b8;
+  color: #a14848;
+  background-color: #f2dada;
+  padding: 1em;
+  > ul,
+  > ul > li {
+    margin: 0;
+  }
+  em {
+    font-weight: bold;
+  }
+}
+
+.confirm-dialog > .dialog-content {
+  > div {
+    margin-bottom: 1em;
+  }
+  > button {
+    margin: 0 0.5em;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  col.large {
+    width: 300px;
+  }
+  col.medium {
+    width: 100px;
+  }
+  col.medium {
+    width: 50px;
+  }
+  > thead {
+    > tr {
+      border-bottom: 2px solid #ddd;
+      > th {
+        padding: 0.5em;
+      }
+    }
+  }
+  > tbody {
+    > tr {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      > td {
+        vertical-align: top;
+        padding: 0.5em;
+        > small {
+          color: #bfbfbf;
+          font-size: 11px;
+        }
+        > .actions {
+          margin-top: 0.5em;
+        }
+      }
+    }
+    > tr:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+  }
 }
 
 #navbar {
@@ -71,6 +274,7 @@ input {
   border-bottom: 1px solid #e7e7e7;
   background-color: #f8f8f8;
   position: fixed;
+  z-index: 1;
   left: 0;
   right: 0;
   top: 0;
@@ -124,17 +328,17 @@ input {
       border: 1px solid #ccc;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
       > li {
-      > a {
-        display: block;
-        padding: 3px 20px;
-        color: #333;
-        white-space: nowrap;
-      }
-      > a:hover,
-      > a:focus {
-        color: #262626;
-        background-color: #f5f5f5;
-      }
+        > a {
+          display: block;
+          padding: 3px 20px;
+          color: #333;
+          white-space: nowrap;
+        }
+        > a:hover,
+        > a:focus {
+          color: #262626;
+          background-color: #f5f5f5;
+        }
       }
     }
   }
@@ -158,16 +362,4 @@ input {
 #content {
   padding: 15px;
   padding-top: 50px;
-}
-
-.glyphicon-large {
-  font-size: 24px;
-  margin: 4px;
-}
-
-h1.page-title {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
-  margin-top: 40px;
-  margin-bottom: 20px;
 }

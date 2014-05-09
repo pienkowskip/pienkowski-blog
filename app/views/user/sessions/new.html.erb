@@ -5,9 +5,9 @@
       }
   });
 </script>
-<%= form_tag user_login_path do %>
+<%= form_tag user_login_path, class: 'row-form' do %>
     <%= text_field_tag :login, params[:login], placeholder: 'Login' %>
     <%= password_field_tag :password, nil, placeholder: 'Hasło' %>
     <label><%= check_box_tag :remember_me, 1, params[:remember_me] %>Zapamiętaj mnie</label>
-    <%= submit_tag 'Zaloguj', class: 'button button-success' %>
+    <%= submit_tag 'Zaloguj', class: 'btn btn-success' %>
 <% end %>
