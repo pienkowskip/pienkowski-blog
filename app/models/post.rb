@@ -2,6 +2,8 @@ class Post < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :category
 
+  scope :for_category, ->(text_id) { joins(:category).where(categories: {text_id: text_id}) }
+
   strip_attributes
 
   validates :title, :content, presence: true

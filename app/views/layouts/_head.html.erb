@@ -1,3 +1,9 @@
+<title>
+  <% if content_for?(:subtitle) %>
+      <%= yield(:subtitle) %> &ndash;
+  <% end %>
+  Paweł Pieńkowski
+</title>
 <%= favicon_link_tag '/images/icons/site.png', type: 'image/png' %>
 
 <%

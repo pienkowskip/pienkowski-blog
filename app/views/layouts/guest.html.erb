@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Paweł Pieńkowski</title>
   <%= render partial: 'layouts/head', locals: {layout: 'guest'} %>
 </head>
 <body id="column-layout">
@@ -15,11 +14,18 @@
   <div id="main">
     <div id="menu">
       <ul>
-        <li<%= raw(' class="active"') if params[:controller] == 'guest/posts' %>><%= link_to 'blog', guest_posts_path %></li>
-        <li><%= link_to 'o mnie', '#'%></li>
-        <li><%= link_to 'artykuły', '#' %></li>
-        <li><%= link_to 'projekty', '#' %></li>
-        <li><%= link_to 'galerie', '#' %></li>
+        <%
+           menu_list_item = ->(category) do
+             content_tag :li, class: (has_params?(controller: 'guest/posts', category_text_id: category) ? 'active' : nil) do
+               link_to category_name(category), guest_posts_path(category)
+             end
+           end
+        %>
+        <%= menu_list_item.call 'blog' %>
+        <li><%= link_to 'o mnie', '#' %></li>
+        <%= menu_list_item.call 'articles' %>
+        <%= menu_list_item.call 'projects' %>
+        <%= menu_list_item.call 'gallery' %>
       </ul>
       <hr />
     </div>

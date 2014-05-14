@@ -1,11 +1,11 @@
 class Admin::PostsController < Admin::AbstractController
   def index
-    @posts = Post.includes(:author).order(created_at: :desc)
-    unless params[:category_id].nil?
-      category = Category.find(params[:category_id])
-      @posts = @posts.where(category: category)
-    end
-    @posts.load
+    @posts = if params[:category_id].nil?
+               Post.includes(:category)
+             else
+               Category.find(params[:category_id]).posts
+             end
+    @posts = @posts.includes(:author).order(created_at: :desc).load
   end
 
   def new

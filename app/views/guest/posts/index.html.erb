@@ -1,1 +1,6 @@
-<%= render partial: 'post_excerpt', collection: @posts, as: :post %>
+<% subtitle(capitalize(category_name(category_text_id))) %>
+<% if @posts.empty? %>
+    <div><%= t(".empty.#{category_text_id}", default: 'Nie ma żadnych wpisów') %></div>
+<% else %>
+    <%= render partial: 'post_excerpt', collection: @posts, as: :post %>
+<% end %>

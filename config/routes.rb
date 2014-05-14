@@ -1,11 +1,13 @@
 Pienkowski::Application.routes.draw do
-  get "categories/index"
   get 'test', to: 'guest/test#index'
 
-  root 'guest/posts#index'
+  root to: 'guest/posts#index', category_text_id: 'blog'
 
   namespace :guest, path: '' do
-    resources :posts, only: [:index, :show]
+    scope path: ':category_text_id', constraints: {category_text_id: /(blog|articles|projects|gallery)/} do
+      get '', to: 'posts#index', as: 'posts'
+      get ':id(/:title)', to: 'posts#show', as: 'post'
+    end
   end
 
   namespace :user do

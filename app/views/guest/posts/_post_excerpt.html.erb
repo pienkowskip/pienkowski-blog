@@ -4,11 +4,11 @@
     <div class="month"><%= l post.created_at, format: '%b' %></div>
     <div class="year"><%= post.created_at.year %></div>
   </div>
-  <h1 class="post-title"><%= link_to post.title, guest_post_path(post) %></h1>
+  <h1 class="post-title"><%= link_to post.title, guest_post_path(post, post.title.parameterize) %></h1>
   <div class="post-attrs">przez <em><%= post.author.username %></em></div>
   <div class="post-content formatted">
     <%= simple_format(post.content) %>
   </div>
   <div class="post-tags"></div>
-  <div class="post-more"><%= link_to raw('czytaj całość &raquo;'), guest_post_path(post) %></div>
+  <div class="post-more"><%= link_to raw('czytaj całość &raquo;'), guest_post_path(post, post.title.parameterize) %></div>
 </div>

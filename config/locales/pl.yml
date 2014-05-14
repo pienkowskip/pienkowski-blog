@@ -86,3 +86,12 @@ pl:
         success: Kategoria została usunięta.
         failure: Wystąpił błąd. Kategoria nie została usunięta.
         dependent: Kategoria nie może zostać usunięta, ponieważ należą do niej wspiy.
+
+  guest:
+    posts:
+      index:
+        empty:
+          blog: Nie ma żadnych wpisów.
+          articles: Nie ma żadnych artykułów.
+          projects: Nie ma żadnych projektów.
+          gallery: Brak galerii.

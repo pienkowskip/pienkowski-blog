@@ -1,17 +1,18 @@
 <tr>
   <td>
-    <%= link_to post.title, edit_admin_post_path(post) %>
+    <% post_path = guest_post_path(post.category.text_id, post, post.title.parameterize) %>
+    <%= link_to post.title, post_path %>
     <div class="actions">
       <%= action_button_to edit_admin_post_path(post), type: 'primary', glyphicon: 'pencil' %>
       <%= action_button_to admin_post_path(post), type: 'danger', glyphicon: 'trash',
                            method: :delete,
                            'data-confirm' => "Czy na pewno chcesz usunąć post <em>#{post.title}</em>?" %>
-      <%= action_button_to edit_admin_post_path(post), type: 'success', glyphicon: 'link' %>
+      <%= action_button_to post_path, type: 'success', glyphicon: 'link' %>
     </div>
   </td>
   <td>
     <%= post.author.username %><br />
     <small><%= l post.created_at, format: :long %></small>
   </td>
-  <td></td>
+  <td><%= post.category.name %></td>
 </tr>
