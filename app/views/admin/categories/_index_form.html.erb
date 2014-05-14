@@ -1,0 +1,7 @@
+<%= form_for :category, url: admin_categories_path, html: {class: 'row-form'} do |fb| %>
+    <%= render partial: 'form_body', locals: {fb: fb} %>
+    <div class="submits">
+      <%= fb.submit 'Utwórz', class: 'btn btn-success' %>
+      <%= link_to 'Odrzuć', admin_categories_path, class: 'btn btn-danger' %>
+    </div>
+<% end %>

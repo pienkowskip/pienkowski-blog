@@ -1,0 +1,7 @@
+<%= form_for :category, url: admin_category_path(@category), method: :patch, html: {class: 'row-form'} do |fb| %>
+    <%= render partial: 'form_body', locals: {fb: fb} %>
+    <div class="submits">
+      <%= fb.submit 'Zapisz', class: 'btn btn-success' %>
+      <%= link_to 'Odrzuć', admin_categories_path, class: 'btn btn-danger' %>
+    </div>
+<% end %>

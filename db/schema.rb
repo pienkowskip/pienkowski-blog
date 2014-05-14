@@ -14,9 +14,11 @@
 ActiveRecord::Schema.define(version: 20140507141112) do
 
   create_table "categories", force: true do |t|
-    t.string "text_id"
-    t.string "name"
+    t.string "text_id", null: false
+    t.string "name",    null: false
   end
+
+  add_index "categories", ["text_id"], name: "index_categories_on_text_id", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "category_id",    null: false

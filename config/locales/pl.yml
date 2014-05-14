@@ -30,6 +30,7 @@ pl:
       too_short: Pole musi być dłuższe niż %{count} znaki/ów.
       invalid: Pole wypełnione niepoprawnie.
       invalid_class: Pole wypełnione niepoprawnie.
+      taken: Pole musi być unikalne. Ta wartość jest już zajęta.
       inclusion: Pole może przyjmować tylko wybrane wartości.
       not_a_number: Pole musi zawierać liczbę.
       greater_than: Pole musi zawierać liczbę większą niż %{count}.
@@ -45,6 +46,18 @@ pl:
           content: treść
           parsed_content: przetworzona treść
           created_at: data
+        category:
+          name: nazwa
+          text_id: identyfikator
+      errors:
+        models:
+          category:
+            attributes:
+              text_id:
+                invalid: Może zawierać tylko małe litery, cyfry, znak podkreślenia i dywiz.
+  helpers:
+    select:
+      prompt: <wybierz>
 
   dialogs:
     titles:
@@ -68,3 +81,8 @@ pl:
       destroy:
         success: Wpis został usunięty.
         failure: Wystąpił błąd. Wpis nie został usunięty.
+    categories:
+      destroy:
+        success: Kategoria została usunięta.
+        failure: Wystąpił błąd. Kategoria nie została usunięta.
+        dependent: Kategoria nie może zostać usunięta, ponieważ należą do niej wspiy.

@@ -1,11 +1,11 @@
 class Post < ActiveRecord::Base
-  #TODO: restrict deleting depending post of User & Category
   belongs_to :author, class_name: 'User'
+  belongs_to :category
 
   strip_attributes
 
   validates :title, :content, presence: true
-  validates_belongs :author
+  validates_belongs :author, :category
   #validates_before_type_case :created_at, format: /\A\d{4}\-\d{2}\-\d{2}\ \d{2}\:\d{2}\Z/, allow_blank: true
   #validates_class :created_at, class: [Time, NilClass]
 

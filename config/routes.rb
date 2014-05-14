@@ -1,4 +1,5 @@
 Pienkowski::Application.routes.draw do
+  get "categories/index"
   get 'test', to: 'guest/test#index'
 
   root 'guest/posts#index'
@@ -19,5 +20,6 @@ Pienkowski::Application.routes.draw do
     resource :dashboard, controller: :dashboard, only: :show
 
     resources :posts, except: :show
+    resources :categories, except: [:new, :show]
   end
 end

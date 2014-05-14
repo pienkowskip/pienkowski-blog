@@ -13,7 +13,6 @@ class Admin::PostsController < Admin::AbstractController
   def create
     @post = Post.new(post_params)
     @post.parsed_content = @post.content
-    @post.category_id = 0
     @post.author = current_user
     if @post.save
       redirect_to admin_posts_url
@@ -48,6 +47,6 @@ class Admin::PostsController < Admin::AbstractController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :created_at)
+    params.require(:post).permit(:title, :content, :category_id, :created_at)
   end
 end
