@@ -1,15 +1,16 @@
 <tr>
   <td>
-    <%= category.name %>
+    <%= link_to category.name, admin_category_posts_path(category) %>
     <div class="actions">
       <%= action_button_to edit_admin_category_path(category), type: 'primary', glyphicon: 'pencil' %>
       <%= action_button_to admin_category_path(category), type: 'danger', glyphicon: 'trash',
                            method: :delete,
                            'data-confirm' => "Czy na pewno chcesz usunąć kategorię <em>#{category.name}</em>?" %>
-      <%= action_button_to '#', type: 'success', glyphicon: 'list' %>
+      <%= action_button_to admin_category_posts_path(category), type: 'success', glyphicon: 'list' %>
     </div>
   </td>
+  <td class="break-words"><%= category.text_id %></td>
   <td>
-    <%= category.text_id %><br />
+    <%= @counts.fetch(category.id, 0) %>
   </td>
 </tr>

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
-  has_many :posts, foreign_key: :author_id, dependent: :restrict, inverse_of: :author
+  has_many :posts, foreign_key: :author_id, dependent: :restrict_with_exception, inverse_of: :author
 
   strip_attributes except: [:password, :password_confirmation]
 

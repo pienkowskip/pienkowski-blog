@@ -78,6 +78,10 @@ hr {
   float: right !important;
 }
 
+.break-words {
+  word-break: break-all;
+}
+
 .glyphicon-large {
   font-size: 24px;
   margin: 4px;
@@ -113,7 +117,8 @@ select
 }
 .btn:hover,
 .btn:focus,
-.btn:active {
+.btn:active,
+.btn.active {
   color: white;
   text-decoration: none;
 }
@@ -151,12 +156,14 @@ select
   }
   .btn-#{$name}:hover,
   .btn-#{$name}:focus,
-  .btn-#{$name}:active {
+  .btn-#{$name}:active,
+  .btn-#{$name}.active {
     background-color: $bg-active;
     border-color: $border-active;
   }
 }
 
+@include btn-type('default', #999, #8a8a8a, #808080, #5e5e5e);
 @include btn-type('primary', #428bca, #357ebd, #3276b1, #285e8e);
 @include btn-type('success', #5cb85c, #4cae4c, #47a447, #398439);
 @include btn-type('danger', #d9534f, #d43f3a, #d2322d, #ac2925);
@@ -269,6 +276,7 @@ table {
 .column-layout {
   clear: both;
   width: 100%;
+  overflow: auto;
   > .layout-column {
     float: left;
     box-sizing: border-box;
@@ -289,8 +297,16 @@ table {
   @include layout-column(2,3);
 }
 
-#navbar {
+.inline-list {
   list-style-type: none;
+  clear: both;
+  padding: 0;
+  > li {
+    float: left;
+  }
+}
+
+#navbar {
   padding: 0;
   padding-right: 15px;
   margin: 0;
@@ -307,7 +323,6 @@ table {
     text-decoration: none;
   }
   > li {
-    float: left;
     > a {
       padding: 15px;
       display: block;

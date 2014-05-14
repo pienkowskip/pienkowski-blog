@@ -1,4 +1,19 @@
-<h1 class="page-title"><i class="glyphicon glyphicon-large glyphicon-th-list"></i> Lista wpisów</h1>
+<h1 class="page-title">
+  <i class="glyphicon glyphicon-large glyphicon-th-list"></i>
+  Lista wpisów
+  <%= link_to 'Nowy wpis', new_admin_post_path, class: 'btn btn-primary pull-right' %></h1>
+<ul id="label-filters" class="inline-list">
+  <%
+     filter_link = ->(name,url,type) do
+       cls = current_page?(url) ? ' active' : ''
+       link_to name, url, class: "btn btn-#{type} x-small" + cls
+     end
+  %>
+  <li><%= filter_link.call 'Wszystkie wspisy', admin_posts_path, 'default' %></li>
+  <% Category.select(:id, :name).order(:text_id).each do |category| %>
+      <li><%= filter_link.call category.name, admin_category_posts_path(category), 'primary' %></li>
+  <% end %>
+</ul>
 <table>
   <% if @posts.empty? %>
       <tbody>

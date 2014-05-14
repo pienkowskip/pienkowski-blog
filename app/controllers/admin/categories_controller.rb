@@ -42,6 +42,7 @@ class Admin::CategoriesController < Admin::AbstractController
 
   def action
     @categories = Category.order(:text_id).load
+    @counts = Post.group(:category_id).count
   end
 
   def post_params

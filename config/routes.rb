@@ -20,6 +20,8 @@ Pienkowski::Application.routes.draw do
     resource :dashboard, controller: :dashboard, only: :show
 
     resources :posts, except: :show
-    resources :categories, except: [:new, :show]
+    resources :categories, except: [:new, :show], shallow: true do
+      resources :posts, only: :index
+    end
   end
 end
