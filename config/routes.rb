@@ -1,5 +1,6 @@
 Pienkowski::Application.routes.draw do
   get 'test', to: 'guest/test#index'
+  post 'test', to: 'guest/test#index'
 
   root to: 'guest/posts#index', category_text_id: 'blog'
 

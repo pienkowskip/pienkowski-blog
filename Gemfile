@@ -51,3 +51,7 @@ gem 'sorcery', '~> 0.8.5'
 gem 'strip_attributes', '~> 1.2'
 
 gem 'i18n-js'
+
+gem 'redcarpet'
+
+gem 'ox'

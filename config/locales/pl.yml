@@ -55,6 +55,48 @@ pl:
             attributes:
               text_id:
                 invalid: Może zawierać tylko małe litery, cyfry, znak podkreślenia i dywiz.
+          post:
+            attributes:
+              parsed_content:
+                invalid: Niepoprawne dane (przyczyna nieznana).
+                parsing_errors: 'Podczas parsowania wystąpiły następujące błędy:<br />%{errors}'
+                validation_errors: 'Podczas sprawdzania poprawności znaleziono błędy w następujących elementach:<br />%{errors}'
+
+
+  xml:
+    formatted:
+      element:
+        disallowed_attr: Element posiada niedozwolny atrybut "%{attr}".
+        invalid_node_class: Wystąpił nieznany węzeł.
+      elements:
+        anchor:
+          invalid_content: Niedozwolona zawartość. Może zawierać tylko tekst i wybrane elementy typu "inline".
+        block_quote: &main_element
+          invalid_content: 'Zawiera niedozwolone elementy. Może zawierać tylko: <p>, <div>, <blockquote>, <h1-6>, <hr>, <ul> i <ol>'
+        break: &empty_element
+          not_empty: Element musi pozostać pusty.
+        code:
+          invalid_content: Niedozwolona zawartość. Może zawierać wyłącznie tekst.
+        division:
+          invalid_parent: Błędnie umieszczenie elementu. Może występować tylko w korzeniu lub elemencie <div>.
+        header:
+          invalid_content: Niedozwolona zawartość. Może zawierać wyłącznie tekst i wybrane elementy typu "inline".
+        horizontal_rule: *empty_element
+        image: *empty_element
+        inline:
+          block_elements: Nie może zawierać żadnych elementów blokowych.
+        list:
+          invalid_content: Niedozwolona zawartość. Może zawierać wyłącznie elementy <li>.
+        list_item:
+          invalid_content: Niedozwolona zawartość.
+        paragraph:
+          invalid_content: Niedozwolona zawartość. Może zawierać wyłącznie tekst, elementy typu "inline" i <div>.
+        unknown:
+          occurred: Wystąpił nieznany element.
+        root:
+          <<: *main_element
+          not_root: Powinien być głównym elementem.
+
   helpers:
     select:
       prompt: <wybierz>

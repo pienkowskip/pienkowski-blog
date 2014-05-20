@@ -17,7 +17,6 @@ class Admin::PostsController < Admin::AbstractController
 
   def create
     @post = Post.new(post_params)
-    @post.parsed_content = @post.content
     @post.author = current_user
     if @post.save
       redirect_to admin_posts_url

@@ -36,17 +36,6 @@ module Admin::AbstractHelper
         labeled_field type, method, label_text, options
       end
     end
-    #def labeled_text_field(method, label_text = nil, options = {})
-    #  labeled_field(:text_field, method, label_text, options)
-    #end
-    #
-    #def labeled_email_field(method, label_text = nil, options = {})
-    #  @template.labeled_field(@object_name, @@partial_name, :email_field, method, label_text, options)
-    #end
-    #
-    #def labeled_text_area(method, label_text = nil, options = {})
-    #  @template.labeled_field(@object_name, @@partial_name, :text_area, method, label_text, options)
-    #end
 
     private
     def labeled_field(ftype, method, label_text = nil, options = {})
