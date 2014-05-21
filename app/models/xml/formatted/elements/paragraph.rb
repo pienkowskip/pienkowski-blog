@@ -13,4 +13,7 @@ class XML::Formatted::Elements::Paragraph < XML::Formatted::Elements::Block
     end
   end
 
+  def size
+    2
+  end
 end

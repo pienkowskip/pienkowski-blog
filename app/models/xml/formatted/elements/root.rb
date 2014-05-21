@@ -23,4 +23,8 @@ class XML::Formatted::Elements::Root < XML::Formatted::Elements::Block
   def render(renderer)
     "<div class=\"formatted\"#{render_attrs(renderer)}>#{render_content(renderer)}</div>"
   end
+
+  def size
+    0
+  end
 end

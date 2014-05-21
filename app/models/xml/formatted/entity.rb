@@ -15,6 +15,12 @@ class XML::Formatted::Entity < XML::Node
     end
   end
 
+  def initialize_copy(other)
+    super
+    @children = nil
+    @data = @value.clone
+  end
+
   def size
     1
   end

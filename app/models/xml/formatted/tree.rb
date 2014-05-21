@@ -36,7 +36,7 @@ class XML::Formatted::Tree < XML::Tree
   def pretty_print
     return 'INVALID TREE' unless valid?
     output = ''
-    @root.traverse_dfs { |node, depth| output << "#{'  ' * depth}#{node}\n" }
+    @root.traverse_dfs { |node, depth, _| output << "#{'  ' * depth}#{node}\n" }
     output
   end
 

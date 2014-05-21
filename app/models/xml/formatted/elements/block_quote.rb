@@ -7,4 +7,8 @@ class XML::Formatted::Elements::BlockQuote < XML::Formatted::Elements::Block
       end
     end
   end
+
+  def size
+    2
+  end
 end

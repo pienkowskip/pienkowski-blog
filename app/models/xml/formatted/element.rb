@@ -19,6 +19,14 @@ class XML::Formatted::Element < XML::Element
     false #because this class is abstract
   end
 
+  def size
+    0
+  end
+
+  def empty?
+    @children.empty?
+  end
+
   protected
 
   def render_content(renderer)

@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title, null: false
       t.text :content, null: false
       t.text :parsed_content, null: false
+      t.text :parsed_excerpt, default: nil
       t.datetime :created_at, null: false
     end
   end

@@ -8,6 +8,11 @@ class XML::Element < XML::Node
     @attrs = {}
   end
 
+  def initialize_copy(other)
+    super
+    @attrs = @attrs.clone
+  end
+
   def set_attr(name, value)
     raise ArgumentError, "invalid class of argument passed to #{self.class.name}.set_attr method (expected Symbol)" unless name.is_a?(Symbol)
     value = value.to_s unless value.is_a?(String)

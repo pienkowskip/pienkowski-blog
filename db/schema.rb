@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140507141112) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: true do |t|
     t.string "text_id", null: false
     t.string "name",    null: false
@@ -26,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140507141112) do
     t.string   "title",          null: false
     t.text     "content",        null: false
     t.text     "parsed_content", null: false
+    t.text     "parsed_excerpt"
     t.datetime "created_at",     null: false
   end
 

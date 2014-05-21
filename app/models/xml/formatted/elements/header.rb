@@ -8,4 +8,8 @@ class XML::Formatted::Elements::Header < XML::Formatted::Elements::Block
       end
     end
   end
+
+  def size
+    2
+  end
 end

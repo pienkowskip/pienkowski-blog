@@ -9,6 +9,22 @@ class XML::Node
     @parent.append(self) unless @parent.nil?
   end
 
+  def clone(parent)
+    raise ArgumentError, "invalid class of argument passed to #{self.class.name} constructor" unless parent.nil? or parent.is_a?(XML::Node)
+
+    cloned = super()
+    cloned.instance_eval do
+      @parent = parent
+      @parent.append(self) unless @parent.nil?
+    end
+    cloned
+  end
+
+  def initialize_copy(other)
+    @parent = nil
+    @children = []
+  end
+
   def append(node)
     raise ArgumentError, "invalid class of argument passed to #{self.class.name}.append method" unless node.is_a?(XML::Node)
 
@@ -31,8 +47,8 @@ class XML::Node
     size < 1
   end
 
-  def traverse_dfs
-    _traverse_dfs(0) { |a, b| yield a, b if block_given? }
+  def traverse_dfs(param=nil)
+    _traverse_dfs(0, param) { |a, b, c| yield a, b, c if block_given? }
   end
 
   def to_s
@@ -41,10 +57,10 @@ class XML::Node
 
   protected
 
-  def _traverse_dfs(depth)
-    yield self, depth if block_given?
+  def _traverse_dfs(depth, param)
+    new_param = block_given? ? (yield self, depth, param) : param
     @children.each do |child|
-      child._traverse_dfs(depth+1) { |a, b| yield a, b if block_given? }
+      child._traverse_dfs(depth+1, new_param) { |a, b, c| yield a, b, c if block_given? }
     end unless @children.nil?
   end
 end

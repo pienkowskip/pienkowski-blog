@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  EXCERPT_SIZE = 200
+
   belongs_to :author, class_name: 'User'
   belongs_to :category
 
@@ -20,6 +22,10 @@ class Post < ActiveRecord::Base
   after_initialize :init
 
   before_save :render_parsed_content
+
+  def excerpt?
+    !parsed_excerpt.nil?
+  end
 
   private
 
@@ -47,9 +53,21 @@ class Post < ActiveRecord::Base
 
   def render_parsed_content
     return unless content_changed?
-    raise XML::RenderingError, 'can render only instances of XML::Formatted::Tree' unless self.parsed_content.is_a? XML::Formatted::Tree
-    self.parsed_content = self.parsed_content.root.render(nil)
+    tree = self.parsed_content
+    raise XML::RenderingError, 'can render only from instances of XML::Formatted::Tree' unless tree.is_a? XML::Formatted::Tree
+    self.parsed_content = render_tree_root(tree.root)
+    cut_root = XML::Formatted::Cutter.new.cut(tree.root, EXCERPT_SIZE)
+    if cut_root == false
+      self.parsed_excerpt = nil
+    else
+      self.parsed_excerpt = render_tree_root(cut_root)
+    end
     true
+  end
+
+  def render_tree_root(root)
+    raise XML::RenderingError, 'can render only instances of XML::Formatted::Elements::Root' unless root.is_a? XML::Formatted::Elements::Root
+    root.render(nil)
   end
 
   def validate_parsed_content
@@ -85,3 +103,34 @@ class Post < ActiveRecord::Base
     end
   end
 end
+
+=begin
+Heading
+=======
+
+Sub-heading
+-----------
+
+Paragraphs are separated
+by a blank line.
+
+Text attributes *italic*,
+**bold**, `monospace`.
+
+A [link](http://example.com).
+
+Shopping list:
+
+ * apples
+ * oranges
+ * pears
+
+Numbered list:
+
+ 1. apples
+ 2. oranges
+ 3. pears
+
+The rain&mdash;not the reign&ndash;in
+Spain.
+=end

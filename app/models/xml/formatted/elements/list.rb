@@ -5,4 +5,8 @@ class XML::Formatted::Elements::List < XML::Formatted::Elements::Block
       @children.all? { |child| child.is_a? XML::Formatted::Elements::ListItem }
     end
   end
+
+  def size
+    2
+  end
 end

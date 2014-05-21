@@ -13,7 +13,7 @@ class XML::Formatted::Validator
     @valid = false
     @messages = {}
 
-    root.traverse_dfs do |node,_|
+    root.traverse_dfs do |node, _, _|
 
       if node.is_a?(XML::Formatted::Element)
         valid = false unless node.validate(self)

@@ -10,6 +10,12 @@ class XML::Data < XML::Node
     @children = nil
   end
 
+  def initialize_copy(other)
+    super
+    @children = nil
+    @data = @data.clone
+  end
+
   def append(data)
     data = data.to_s unless data.is_a?(String)
     @data << data
