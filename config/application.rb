@@ -24,6 +24,8 @@ module Pienkowski
     config.i18n.fallbacks = [:en]
     config.i18n.default_locale = :pl
 
+    config.eager_load_paths << "#{config.root}/lib"
+
     config.action_controller.include_all_helpers = false
 
     config.assets.precompile << /^#{Regexp.escape('glyphicons/halflings-regular')}.(svg|eot|ttf)$/

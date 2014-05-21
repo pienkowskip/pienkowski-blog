@@ -42,13 +42,7 @@ class Post < ActiveRecord::Base
       self.parsed_content = nil
       return
     end
-    #TODO: Maybe move this to initializer.
-    parser = Redcarpet::Markdown.new(
-        Redcarpet::Render::XHTML.new(),
-        disable_indented_code_blocks: true,
-        strikethrough: true,
-        underline: true)
-    self.parsed_content = XML::Formatted::Tree.new('<root>' + parser.render(content) + '</root>')
+    self.parsed_content = XML::Formatted::Tree.new('<root>' + MarkdownParser.instance.parse(content) + '</root>')
   end
 
   def render_parsed_content
