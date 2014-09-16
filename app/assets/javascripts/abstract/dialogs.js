@@ -76,6 +76,12 @@ function ModalDialog(cls, title, content) {
             e.stopPropagation();
             return false;
         });
+        $(document).one('keyup', function(e) {
+            if (e.which === 27) {
+                e.stopImmediatePropagation();
+                self.close();
+            }
+        });
         dimmer.fadeIn('fast');
         dialog.fadeIn('fast', function() {
             if (typeof onShowListener === 'function')
