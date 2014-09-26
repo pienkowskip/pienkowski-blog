@@ -1,0 +1,48 @@
+<h1 class="page-title"><i class="glyphicon glyphicon-large glyphicon-folder-open"></i> Katalogi mediów</h1>
+<div class="column-layout">
+
+  <div class="layout-column layout-column-1-of-3">
+    <%= validation_errors @directory %>
+    <%= render partial: "#{action}_form" %>
+  </div>
+  <script>console.log($('table td').first().css('padding-left'));</script>
+  <div class="layout-column layout-column-2-of-3">
+    <table>
+      <% if @directories.empty? %>
+          <tbody>
+          <tr><td>Nie ma żadnych katalogów. Stwórz nowy po lewej stronie.</td></tr>
+          </tbody>
+      <% else %>
+          <colgroup>
+            <col class="large" />
+            <col class="small" />
+          </colgroup>
+
+          <thead>
+          <tr>
+            <th>Nazwa</th>
+            <th>Mediów</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <%= render partial: 'directory', collection: @directories, as: :directory %>
+          </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
+<script>
+    (function() {
+        var spacerWidthEm = 1.5;
+        var table = $('table');
+        var size = parseFloat(table.css('font-size'));
+        if (!$.isNumeric(size))
+            return;
+        size *= spacerWidthEm;
+        table.find('tr > td:first-child').css('padding-left', function(i, value) {
+            var depth = $(this).data('depth');
+            return ($.isNumeric(depth) && depth != 0) ? '+=' + (depth * size) : undefined;
+        });
+  })();
+</script>

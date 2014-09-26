@@ -1,0 +1,15 @@
+<tr>
+  <td data-depth="<%= directory.depth %>">
+    <%= link_to directory.name, admin_directory_path(directory) %><br />
+    <small><%= directory.fullpath %></small>
+    <div class="actions">
+      <%= action_button_to edit_admin_directory_path(directory), type: 'primary', glyphicon: 'pencil' %>
+      <%= action_button_to admin_directory_path(directory), type: 'danger', glyphicon: 'trash',
+                           method: :delete,
+                           'data-confirm' => "Czy na pewno chcesz usunąć katalog <em>#{directory.name}</em>?" %>
+      <%= action_button_to admin_directory_path(directory), type: 'success', glyphicon: 'list' %>
+      <%= action_button_to edit_admin_directory_path(directory), type: 'success', glyphicon: 'open' %>
+    </div>
+  </td>
+  <td><%= @counts.fetch directory.id, 0 %></td>
+</tr>

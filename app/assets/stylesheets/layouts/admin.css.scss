@@ -258,16 +258,17 @@ table {
     > tr {
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
+      .cell-wr > small {
+        color: #bfbfbf;
+        font-size: 11px;
+      }
+      .cell-wr > .actions {
+        margin-top: 0.5em;
+      }
       > td {
         vertical-align: top;
         padding: 0.5em;
-        > small {
-          color: #bfbfbf;
-          font-size: 11px;
-        }
-        > .actions {
-          margin-top: 0.5em;
-        }
+        @extend .cell-wr;
       }
     }
     > tr:nth-child(odd) {

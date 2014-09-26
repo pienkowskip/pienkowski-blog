@@ -26,4 +26,9 @@ class Guest::TestController < Guest::AbstractController
   def index
     @result = params[:input]
   end
+
+  def resource
+    puts params.inspect
+    render text: ''
+  end
 end

@@ -2,6 +2,8 @@ Pienkowski::Application.routes.draw do
   get 'test', to: 'guest/test#index'
   post 'test', to: 'guest/test#index'
 
+  get 'test/*path/:filename', to: 'guest/test#resource'
+
   root to: 'guest/posts#index', category_text_id: 'blog'
 
   namespace :guest, path: '' do
@@ -25,6 +27,10 @@ Pienkowski::Application.routes.draw do
     resources :posts, except: :show
     resources :categories, except: [:new, :show], shallow: true do
       resources :posts, only: :index
+    end
+
+    resources :directories, except: [:new, :show], shallow: true do
+      resources :resources
     end
   end
 end

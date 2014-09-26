@@ -1,0 +1,7 @@
+<%= form_for :directory, url: admin_directories_path, html: {class: 'row-form'} do |fb| %>
+    <%= render partial: 'form_body', locals: {fb: fb} %>
+    <div class="submits">
+      <%= fb.submit 'Utwórz', class: 'btn btn-success' %>
+      <%= link_to 'Odrzuć', admin_directories_path, class: 'btn btn-danger' %>
+    </div>
+<% end %>

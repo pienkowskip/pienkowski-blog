@@ -49,12 +49,20 @@ pl:
         category:
           name: nazwa
           text_id: identyfikator
+        directory:
+          parent_id: katalog nadrzędny
+          name: nazwa
       errors:
         models:
           category:
             attributes:
               text_id:
                 invalid: Może zawierać tylko małe litery, cyfry, znak podkreślenia i dywiz.
+          directory:
+            attributes:
+              name:
+                taken: Musi być unikalna w wybranym katalogu.
+                invalid: Pole wypełnione niepoprawnie. Nie może zawierać znaku ukośnika.
           post:
             attributes:
               parsed_content:

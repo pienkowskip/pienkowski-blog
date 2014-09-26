@@ -1,0 +1,7 @@
+<label>Katalog nadrzędny</label>
+<%= fb.select :parent_id,
+              @directories.map { |dir|
+                [raw('&nbsp; ' * dir.depth + (dir.depth > 0 ? '&#8227; ' : '')) + dir.name, dir.id] },
+              {include_blank: '<brak>'} %>
+<%= fb.labeled_text_field :name, 'Nazwa', placeholder: 'Nazwa' %>
+<hr />

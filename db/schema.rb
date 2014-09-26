@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507141112) do
+ActiveRecord::Schema.define(version: 20140525173901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20140507141112) do
   end
 
   add_index "categories", ["text_id"], name: "index_categories_on_text_id", unique: true, using: :btree
+
+  create_table "directories", force: true do |t|
+    t.string "ancestry"
+    t.text   "fullpath", null: false
+    t.string "name",     null: false
+  end
+
+  add_index "directories", ["name", "ancestry"], name: "index_directories_on_name_and_ancestry", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "category_id",    null: false
@@ -35,6 +43,15 @@ ActiveRecord::Schema.define(version: 20140507141112) do
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
+
+  create_table "resources", force: true do |t|
+    t.integer  "directory_id", null: false
+    t.string   "name",         null: false
+    t.string   "type",         null: false
+    t.string   "title"
+    t.datetime "created_at",   null: false
+    t.binary   "content",      null: false
+  end
 
   create_table "users", force: true do |t|
     t.string   "username",                     null: false

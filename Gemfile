@@ -55,3 +55,5 @@ gem 'i18n-js'
 gem 'redcarpet'
 
 gem 'ox'
+
+gem 'ancestry'
