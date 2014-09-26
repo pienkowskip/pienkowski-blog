@@ -25,21 +25,4 @@ module Admin::AbstractHelper
     options[:class] = options.fetch(:class, '') + glyphicon + ' btn btn-action x-small' + type
     link_to '', url, options
   end
-
-  def self.included(arg)
-    ActionView::Helpers::FormBuilder.send(:include, LabelingFormBuilder)
-  end
-
-  module LabelingFormBuilder
-    [:text_field, :email_field, :text_area].each do |type|
-      define_method :"labeled_#{type}", ->(method, label_text = nil, options = {}) do
-        labeled_field type, method, label_text, options
-      end
-    end
-
-    private
-    def labeled_field(ftype, method, label_text = nil, options = {})
-      label(method, label_text) + send(ftype, method, options)
-    end
-  end
 end
