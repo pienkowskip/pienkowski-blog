@@ -44,6 +44,9 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Use TZInfo on windows
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
+
 gem 'quiet_assets', group: :development
 
 gem 'sorcery', '~> 0.8.5'
