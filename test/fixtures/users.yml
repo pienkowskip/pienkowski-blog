@@ -1,0 +1,5 @@
+default:
+  username: <%= default_user.username %>
+  email: <%= default_user.email %>
+  crypted_password: <%= default_user.crypted_password %>
+  salt: <%= default_user.salt %>
